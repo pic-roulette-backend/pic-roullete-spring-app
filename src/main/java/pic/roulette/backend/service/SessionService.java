@@ -22,7 +22,7 @@ public class SessionService {
         String sessionId = null;
         while (true) {
             sessionId = RandomStringUtils.randomAlphanumeric(8);
-            if (!sessionRepo.findById(sessionId).isPresent()) break;
+            if (!sessionRepo.existsById(sessionId)) break;
         }
         sessionRepo.save(new Session(sessionId));
         return sessionId;
