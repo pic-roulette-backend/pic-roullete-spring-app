@@ -58,4 +58,9 @@ public class SessionService {
         }
         return false;
     }
+
+    //get all sessions
+    public Iterable<Session> getAllSessions() {
+        return sessionRepo.findAll();
+    }
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
+import pic.roulette.backend.model.Session;
 import pic.roulette.backend.model.UserUrlPair;
 import pic.roulette.backend.service.SessionService;
 
@@ -52,5 +53,12 @@ public class SessionController
     @ApiOperation(value = "An api function to remove all picture URLs posted to a session." )
     public boolean removeAllPictures(@PathVariable("sessionId") String sessionId) {
         return sessionService.removeAllPictures(sessionId);
+    }
+
+    //get all sessions
+    @RequestMapping(value = "/session/getAll", method = RequestMethod.GET)
+    @ApiOperation(value = "An api function to get all sessions stored in the database." )
+    public Iterable<Session> getAllSessions() {
+        return sessionService.getAllSessions();
     }
 }
