@@ -25,7 +25,8 @@ public class SessionService {
             if (!sessionRepo.findById(sessionId).isPresent()) break;
         }
         System.out.println(sessionId);
-        // sessionRepo.save(new Session(sessionId));
+        Session newSession = new Session(sessionId);
+        sessionRepo.save(newSession);
         return sessionId;
     }
 
