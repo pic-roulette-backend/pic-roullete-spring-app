@@ -24,9 +24,7 @@ public class SessionService {
             sessionId = RandomStringUtils.randomAlphanumeric(8);
             if (!sessionRepo.findById(sessionId).isPresent()) break;
         }
-        System.out.println(sessionId);
-        Session newSession = new Session(sessionId);
-        sessionRepo.save(newSession);
+        sessionRepo.save(new Session(sessionId));
         return sessionId;
     }
 
