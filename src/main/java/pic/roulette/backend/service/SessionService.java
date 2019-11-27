@@ -28,6 +28,11 @@ public class SessionService {
         return sessionId;
     }
 
+    //create session
+    public Boolean joinSession(String sessionId) {
+        return sessionRepo.existsById(sessionId);
+    }
+
     //add picture url to session
     public boolean addPicture(String sessionId, String username, String picUrl) {
         Optional<Session> session = sessionRepo.findById(sessionId);

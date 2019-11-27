@@ -34,6 +34,13 @@ public class SessionController
         return sessionService.createSession();
     }
 
+    // check that session id is valid
+    @RequestMapping(value = "/session/join/{sessionId}", method = RequestMethod.GET)
+    @ApiOperation(value = "An api function to validate a session id." )
+    public Boolean joinSession(@PathVariable("sessionId") String sessionId) {
+        return sessionService.joinSession(sessionId);
+    }
+
     // add picture to session's saved game data
     @RequestMapping(value = "/session/addPicture/{sessionId}", method = RequestMethod.POST)
     @ApiOperation(value = "An api function to add a picture to a session's saved game data." )
