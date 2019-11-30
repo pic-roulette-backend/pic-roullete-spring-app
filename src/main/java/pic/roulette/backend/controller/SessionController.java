@@ -42,10 +42,12 @@ public class SessionController
     }
 
     // add picture to session's saved game data
-    @RequestMapping(value = "/session/addPicture/{sessionId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/session/addPicture/", method = RequestMethod.POST)
     @ApiOperation(value = "An api function to add a picture to a session's saved game data." )
-    public boolean addPicture(@PathVariable("sessionId") String sessionId, @Valid @RequestBody UserUrlPair p) {
-        return sessionService.addPicture(sessionId, p.getUsername(), p.getPicUrl());
+    public boolean addPicture(@Valid @RequestBody String sessionId) {
+        System.out.println(sessionId);
+        return true;
+        // return sessionService.addPicture(sessionId, p.getUsername(), p.getPicUrl());
     }
 
     //get all pictures for a session
