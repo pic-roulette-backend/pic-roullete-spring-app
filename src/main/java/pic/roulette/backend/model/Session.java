@@ -8,19 +8,19 @@ public class Session {
     // member vars
     @Id
     private String sessionId;
-    private ArrayList<UserUrlPair> pictureUrls;
+    private ArrayList<Text> messages;
 
     //ctor
     public Session(String sessionId) {
         this.sessionId = sessionId;
-        this.pictureUrls = new ArrayList<UserUrlPair>();
+        this.messages = new ArrayList<Text>();
     }
 
     //getters
     public String getSessionId() {return this.sessionId;}
-    public ArrayList<UserUrlPair> getPictureUrls() {return this.pictureUrls;}
+    public ArrayList<Text> getMessages() {return this.messages;}
 
     //setters
     public void setSessionId(String sessionId) {this.sessionId = sessionId;}
-    public void setPictureUrls(ArrayList<UserUrlPair> pictureUrls) {this.pictureUrls = pictureUrls;}
+    public void setMessages(ArrayList<Text> pictureUrls) {this.messages = pictureUrls;}
 }

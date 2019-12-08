@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
 import pic.roulette.backend.model.Session;
-import pic.roulette.backend.model.UserUrlPair;
+import pic.roulette.backend.model.Text;
 import pic.roulette.backend.service.SessionService;
 
 @RestController
@@ -42,26 +42,26 @@ public class SessionController
     }
 
     // add picture to session's saved game data
-    @RequestMapping(value = "/session/addPicture/", method = RequestMethod.POST)
-    @ApiOperation(value = "An api function to add a picture to a session's saved game data." )
-    public boolean addPicture(@Valid @RequestBody String sessionId) {
-        System.out.println(sessionId);
-        return true;
-        // return sessionService.addPicture(sessionId, p.getUsername(), p.getPicUrl());
+    @RequestMapping(value = "/session/addMessage/{sessionId}/{username}/{message}", method = RequestMethod.POST)
+    @ApiOperation(value = "An api function to add a message to a session's saved data." )
+    public boolean addMessage(@PathVariable("sessionId") String sessionId, @PathVariable("username") String username, @PathVariable("message") String message) {
+        // System.out.println(sessionId);
+        // return true;
+        return sessionService.addMessage(sessionId,username,message);
     }
 
     //get all pictures for a session
-    @RequestMapping(value = "/session/getAllPictures/{sessionId}", method = RequestMethod.GET)
-    @ApiOperation(value = "An api function to get all picture URLs posted to a session." )
-    public ArrayList<UserUrlPair> getAllPictures(@PathVariable("sessionId") String sessionId) {
-        return sessionService.getAllPictures(sessionId);
+    @RequestMapping(value = "/session/getAllMessages/{sessionId}", method = RequestMethod.GET)
+    @ApiOperation(value = "An api function to get all messages posted to a session." )
+    public ArrayList<Text> getAllMessages(@PathVariable("sessionId") String sessionId) {
+        return sessionService.getAllMessages(sessionId);
     }
 
     //remove all pictures
-    @RequestMapping(value = "/session/removeAllPictures/{sessionId}", method = RequestMethod.POST)
-    @ApiOperation(value = "An api function to remove all picture URLs posted to a session." )
-    public boolean removeAllPictures(@PathVariable("sessionId") String sessionId) {
-        return sessionService.removeAllPictures(sessionId);
+    @RequestMapping(value = "/session/removeAllMessages/{sessionId}", method = RequestMethod.POST)
+    @ApiOperation(value = "An api function to remove all messages posted to a session." )
+    public boolean removeAllMessages(@PathVariable("sessionId") String sessionId) {
+        return sessionService.removeAllMessages(sessionId);
     }
 
     //get all sessions

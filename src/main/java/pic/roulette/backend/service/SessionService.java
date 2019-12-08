@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pic.roulette.backend.repository.SessionRepository;
 import pic.roulette.backend.model.Session;
-import pic.roulette.backend.model.UserUrlPair;
+import pic.roulette.backend.model.Text;
 
 @Service
 public class SessionService {
@@ -34,11 +34,11 @@ public class SessionService {
     }
 
     //add picture url to session
-    public boolean addPicture(String sessionId, String username, String picUrl) {
+    public boolean addMessage(String sessionId, String username, String message) {
         Optional<Session> session = sessionRepo.findById(sessionId);
         if (session.isPresent()) {
-            ArrayList<UserUrlPair> pictureUrls = session.get().getPictureUrls();
-            pictureUrls.add(new UserUrlPair(username, picUrl));
+            ArrayList<Text> pictureUrls = session.get().getMessages();
+            pictureUrls.add(new Text(username, message));
             sessionRepo.save(session.get());
             return true;
         }
@@ -46,17 +46,17 @@ public class SessionService {
     }
 
     //get all picture urls for a sessionId
-    public ArrayList<UserUrlPair> getAllPictures(String sessionId) {
+    public ArrayList<Text> getAllMessages(String sessionId) {
         Optional<Session> session = sessionRepo.findById(sessionId);
-        if (session.isPresent()) return session.get().getPictureUrls();
+        if (session.isPresent()) return session.get().getMessages();
         return null;
     }
 
     //get all picture urls for a sessionId
-    public boolean removeAllPictures(String sessionId) {
+    public boolean removeAllMessages(String sessionId) {
         Optional<Session> session = sessionRepo.findById(sessionId);
         if (session.isPresent()) {
-            session.get().getPictureUrls().clear();
+            session.get().getMessages().clear();
             sessionRepo.save(session.get());
             return true;
         }

@@ -1,21 +1,21 @@
 package pic.roulette.backend.model;
 
-public class UserUrlPair {
+public class Text {
     //member vars
     String username;
-    String picUrl;
+    String message;
 
     //ctor
-    public UserUrlPair(String username, String picUrl) {
+    public Text(String username, String message) {
         this.username = username;
-        this.picUrl = picUrl;
+        this.message = message;
     }
 
     //getters
     public String getUsername() {return this.username;}
-    public String getPicUrl() {return this.picUrl;}
+    public String getTextMessages() {return this.message;}
 
     //setters
     public void setUsername(String username) {this.username = username;}
-    public void setPicUrl(String picUrl) {this.picUrl = picUrl;}
+    public void setTextMessages(String message) {this.message = message;}
 }
