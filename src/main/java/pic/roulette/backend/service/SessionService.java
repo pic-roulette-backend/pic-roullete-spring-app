@@ -38,7 +38,9 @@ public class SessionService {
         Optional<Session> session = sessionRepo.findById(sessionId);
         if (session.isPresent()) {
             ArrayList<Text> pictureUrls = session.get().getMessages();
-            pictureUrls.add(new Text(username, message));
+            Integer id  = pictureUrls.size() + 1;
+
+            pictureUrls.add(new Text(id, username, message));
             sessionRepo.save(session.get());
             return true;
         }
